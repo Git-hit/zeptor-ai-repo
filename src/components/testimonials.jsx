@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 
 const testimonials = [
     {
@@ -25,14 +26,14 @@ const testimonials = [
 
 export default function Testimonials() {
     const containerRef = useRef(null);
-    const [currentIndex, setCurrentIndex] = useState(1); // Start from center
+    const [currentIndex, setCurrentIndex] = useState(1);
 
     const scrollToIndex = (index) => {
         const container = containerRef.current;
         if (container) {
             const cardWidth = window.innerWidth < 768 ? container.offsetWidth / 1.16 : container.offsetWidth / 3;
             container.scrollTo({
-                left: (index - 1) * cardWidth, // Center the clicked card
+                left: (index - 1) * cardWidth,
                 behavior: 'smooth',
             });
             setCurrentIndex(index);
@@ -42,33 +43,41 @@ export default function Testimonials() {
     return (
         <div className="relative w-full max-w-7xl mx-auto h-80 my-40">
             <h2 className='text-gray-50 text-5xl font-medium text-center my-10'>Testimonials</h2>
-            {/* Card Container */}
             <div
                 ref={containerRef}
-                className="flex justify-center gap-5 overflow-hidden scroll-smooth"
+                className="flex justify-center gap-5 overflow-x-hidden scroll-smooth"
+                style={{
+                    maskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
+                    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
+                }}
             >
-                {/* Adding Clone Cards for Infinite Feel */}
                 {[testimonials[testimonials.length - 1], ...testimonials, testimonials[0]].map((testimonial, index) => (
-                    <div
+                    <motion.div
                         key={index}
-                        style={{
-                            background: `linear-gradient(to bottom right, #31D11C -150.4%, #000000 91.66%)`
-                        }}
-                        className={`flex-none w-[80%] md:w-1/3 p-4 h-60 rounded-2xl border border-green-light`}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className={`flex-none w-[80%] md:w-1/3 p-4 h-60 relative flex flex-col justify-between`}
                     >
-                        <p className="text-sm md:text-lg text-white/70 mb-4">"{testimonial.feedback}"</p>
+                        <div
+                            style={{
+                                background: `linear-gradient(to bottom right, #31D11C -150.4%, #000000 91.66%)`,
+                            }}
+                            className="absolute left-0 top-0 z-[-1] w-full h-full rounded-3xl scale-y-[99.5%] scale-x-[100.5%]"
+                        ></div>
+                        <div className='absolute left-0 top-0 z-[-2] w-full h-full rounded-3xl bg-gradient-to-br from-[#030C01] to-green-light scale-[101%]'></div>
+                        <p className="text-sm md:text-lg text-white/70">"{testimonial.feedback}"</p>
                         <h3 className="text-lg md:text-xl text-white/70 font-normal md:font-semibold">{testimonial.name}</h3>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
 
-            {/* Circular Buttons */}
             <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 flex space-x-2">
                 {testimonials.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => scrollToIndex(index)}
-                        className={`w-4 h-4 rounded-full transition ${currentIndex === index ? 'bg-green-light' : 'bg-green-dark'}`}
+                        className={`w-4 h-4 rounded-full transition ${currentIndex === index ? 'bg-green-light' : 'bg-[#213129]'}`}
                     />
                 ))}
             </div>

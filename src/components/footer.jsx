@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 export default function Footer() {
     const links = [
         {
@@ -49,53 +51,73 @@ export default function Footer() {
         },
     ]
     return (
-        <footer className="bg-[#111111]">
+        <motion.footer 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-[#111111]"
+        >
             <div className="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
-                <div div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-10 items-center">
-                    <div className="col-span-full md:col-span-1 lg:block">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-10 items-center">
+                    <motion.div 
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="col-span-full md:col-span-1"
+                    >
                         <a href="/" className="inline-flex items-center gap-2.5 text-2xl font-bold text-black md:text-3xl" aria-label="logo">
                             <img src="/Zeptor AI Logo.svg" width={150} alt="Zeptor AI" />
                         </a>
-                        <p className="mt-3 text-lg md:text-xs sm:text-sm text-white/70">
-                            abcbrojo@gmail.com
-                        </p>
-                        <p className="mt-3 text-lg md:text-xs sm:text-sm text-white/70">
-                            Madan Mohan Silk Mill Com, Sonawala Cross Rd No. 2, Goregaon (East)
-                        </p>
-                    </div>
-                    <div className="col-span-full lg:col-span-2 flex md:justify-center">
+                        <p className="mt-3 text-lg md:text-xs sm:text-sm text-white/70">abcbrojo@gmail.com</p>
+                        <p className="mt-3 text-lg md:text-xs sm:text-sm text-white/70">Madan Mohan Silk Mill Com, Sonawala Cross Rd No. 2, Goregaon (East)</p>
+                    </motion.div>
+
+                    <motion.div 
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="col-span-full lg:col-span-2 flex md:justify-center"
+                    >
                         <div className="mt-3 flex flex-col gap-7 text-base">
-                            {links?.map((item, index) => (
-                                <p key={index}><a className="inline-flex gap-x-2 text-gray-50 hover:underline focus:outline-hidden focus:underline" href={item.link}>{item.title}</a></p>
+                            {links.map((item, index) => (
+                                <a key={index} className="inline-flex gap-x-2 text-gray-50 hover:underline" href={item.link}>{item.title}</a>
                             ))}
                         </div>
-                    </div>
-                    <div className="space-x-4 col-span-full lg:col-span-2 flex flex-col md:items-end gap-5">
+                    </motion.div>
+
+                    <motion.div 
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="col-span-full lg:col-span-2 flex flex-col md:items-end gap-5"
+                    >
                         <p className="hidden md:inline-flex gap-x-2 text-gray-50 text-lg font-medium">Contact</p>
                         <div className="flex gap-1">
-                            {socials?.map((social, index) => (
-                                <a key={index} className="inline-block text-green-light focus:outline-hidden" target="_blank" href={social.link}>
+                            {socials.map((social, index) => (
+                                <a key={index} className="inline-block text-green-light" target="_blank" href={social.link}>
                                     {social.icon}
                                 </a>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
-                <div div className="pt-5 mt-5 border-t border-gray-200" >
+
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.7 }}
+                    className="pt-5 mt-5 border-t border-gray-200"
+                >
                     <div className="flex justify-between items-center">
-                        <div className="flex flex-wrap w-full items-center justify-between gap-3">
-                            <p className="text-base md:text-xs sm:text-sm text-white/70">
-                                © 2023 S01arvoice A1. All rights reserved.
-                            </p>
-                            <div className="flex gap-4 text-sm">
-                                {policies?.map((policy, index) => (
-                                    <a key={index} className="inline-flex gap-x-2 text-white/70 hover:underline focus:outline-hidden focus:underline cursor-pointer" href={policy.index}>{policy.title}</a>
-                                ))}
-                            </div>
+                        <p className="text-base md:text-xs sm:text-sm text-white/70">© 2023 S01arvoice A1. All rights reserved.</p>
+                        <div className="flex gap-4 text-sm">
+                            {policies.map((policy, index) => (
+                                <a key={index} className="text-white/70 hover:underline" href={policy.link}>{policy.title}</a>
+                            ))}
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
-        </footer >
-    )
+        </motion.footer>
+    );
 }

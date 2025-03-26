@@ -37,9 +37,13 @@ export default function Navbar() {
                     </nav>
 
                     {/* Action Buttons */}
-                    <div className="hidden flex-col gap-2.5 sm:flex-row sm:justify-center lg:flex lg:justify-start">
-                        <a href="#" className="inline-block rounded-lg bg-green-dark hover:bg-green-light transition-all duration-150 border border-green-light px-8 py-3 text-center text-sm font-semibold text-gray-50 hover:text-slate-900 md:text-base">Get started</a>
-                    </div>
+                    <button type='button'className='lg:flex hidden cursor-pointer'>
+                        <div className='h-full w-full rounded-lg bg-gradient-to-tr justify-center items-center from-[#3ED42A] to-[#BABABA]'>
+                            <div className='bg-[#0B2F05] hover:bg-green-light hover:text-slate-900 transition-all duration-150 inline-flex items-center gap-2 rounded-lg text-white px-6 py-3 text-sm font-semibold md-text-base mx-[1px] my-[1px]'>
+                                Get started
+                            </div>
+                        </div>
+                    </button>
 
                     {/* Mobile Menu Button */}
                     {/* <button type="button" onClick={toggleMenu} className="inline-flex items-center gap-2 rounded-lg bg-[#0B2F05] text-white px-2.5 py-2 text-sm font-semibold md:text-base lg:hidden border to-r">

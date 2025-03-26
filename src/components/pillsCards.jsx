@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export default function PillsCards() {
     const cards = [
         {
@@ -21,24 +23,29 @@ export default function PillsCards() {
             desc: 'Our Pill Plus delivers a custom solution for your solar company, built for your requests and scenarios to fit your process, cool as that!',
         }
     ]
+
     return (
         <div id="solution" className="mt-20 md:mt-28">
             <h2 className="text-gray-50 text-4xl font-semibold text-center">Solutions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 md:mt-20 p-5 md:p-0 max-w-7xl mx-auto">
                 {cards?.map((card, index) => (
-                    <div
+                    <motion.div
                         key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.2 }}
+                        whileHover={{ scale: 1.05, boxShadow: "0px 10px 30px rgba(49, 209, 28, 0.2)" }}
                         style={{
                             background: `linear-gradient(322.05deg, #31D11C -122.4%, #000000 91.66%)`
                         }}
-                        className="border border-green-light rounded-lg text-gray-50 flex flex-col gap-5 p-3 md:p-10 col-span-1 h-full min-h-[300px]"
+                        className="border border-green-light rounded-lg text-gray-50 flex flex-col gap-5 p-3 md:p-10 col-span-1 h-full min-h-[300px] cursor-pointer"
                     >
                         <div className="flex items-center gap-3">
                             <img className="bg-green-dark border border-green-light rounded-md p-2 size-12" src={card.icon} alt={`Pill ${index + 1}`} />
                             <p className="text-3xl font-semibold">{card.title}</p>
                         </div>
                         <p className="text-sm md:text-base">{card.desc}</p>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>
