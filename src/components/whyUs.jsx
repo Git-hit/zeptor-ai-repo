@@ -22,7 +22,7 @@ export default function WhyUs() {
             <p className="text-center text-sm px-6 md:px-0 md:text-lg text-white/70">Through proven insights, we’ve uncovered a truth, top marketing leaders don’t waste time or money on VAs, sales reps, or teams for lead qualification, instead dominating with AI to convert raw and dead leads into appointments, yet many struggle, spending thousands, and that’s where our system comes in with three key qualities.</p>
             <div className="flex flex-col md:flex-row gap-5 md:justify-between items-center">
                 {cards?.map((card, index) => (
-                    <div key={index} className="flex flex-col gap-5 px-5 md:px-0">
+                    <div key={index} className="flex flex-col gap-5 px-5 md:px-0 min-h-[200px]">
                         <div className="flex items-center gap-3">
                             <img className="bg-green-dark border border-green-light rounded-md p-3 size-12" src={card.icon} alt={`Pill ${index + 1}`} />
                             <p
