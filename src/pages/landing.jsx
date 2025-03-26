@@ -5,6 +5,7 @@ import Footer from "../components/footer";
 import Hero from "../components/hero";
 import Navbar from "../components/navbar";
 import PillsCards from "../components/pillsCards";
+import SmoothScroll from "../components/smoothScrool";
 import Testimonials from "../components/testimonials";
 import VAPI from "../components/vapi-assistant";
 import WhyUs from "../components/whyUs";
@@ -13,16 +14,18 @@ export default function Landing() {
     return (
         <div className="relative bg-[#030C01]">
             <title>Zeptor AI</title>
-            <Navbar />
-            <Hero />
-            <PillsCards />
-            <WhyUs />
-            <Testimonials />
-            <AboutUs />
-            <FAQ />
-            <CTA />
-            <Footer />
-            <VAPI />
+            <SmoothScroll>
+                <Navbar />
+                <Hero />
+                <PillsCards />
+                <WhyUs />
+                <Testimonials />
+                <AboutUs />
+                <FAQ />
+                <CTA />
+                <Footer />
+                <VAPI />
+            </SmoothScroll>
         </div>
     )
 }

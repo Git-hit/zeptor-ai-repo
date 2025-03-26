@@ -45,7 +45,7 @@ export default function Testimonials() {
             <h2 className='text-gray-50 text-5xl font-medium text-center my-10'>Testimonials</h2>
             <div
                 ref={containerRef}
-                className="flex justify-center gap-5 overflow-x-hidden scroll-smooth"
+                className="flex justify-center gap-5 overflow-hidden scroll-smooth"
                 style={{
                     maskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
                     WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
