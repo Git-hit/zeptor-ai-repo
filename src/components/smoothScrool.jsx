@@ -43,7 +43,7 @@ export default function SmoothScroll({ children }){
     };
 
     return (
-        <div className="parent bg-[#030C01]">
+        <div className="parent">
             <div ref={scrollingContainerRef}>{children}</div>
         </div>
     );

@@ -12,9 +12,9 @@ import WhyUs from "../components/whyUs";
 
 export default function Landing() {
     return (
-        <div className="relative bg-[#030C01]">
+        <SmoothScroll>
             <title>Zeptor AI</title>
-            <SmoothScroll>
+            <div className="relative bg-[#030C01]">
                 <Navbar />
                 <Hero />
                 <PillsCards />
@@ -25,7 +25,7 @@ export default function Landing() {
                 <CTA />
                 <Footer />
                 <VAPI />
-            </SmoothScroll>
-        </div>
+            </div>
+        </SmoothScroll>
     )
 }
